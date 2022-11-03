@@ -23,7 +23,6 @@ namespace MyMusic.API.Controllers
         [Route("musics/{name}")]
         public ActionResult<List<AcquiredMusics>> GetMusics(string name)
         {
-
             ISearchMusicsUseCase searchMusicsUseCase = new SearchMusicsUseCase();
             ICasesValidationUseCase validationUseCase = new CasesValidationUseCase();
 

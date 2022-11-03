@@ -5,11 +5,15 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMusic.API", "MyMusic.API\MyMusic.API.csproj", "{84639721-0EF4-49DC-8B45-1EAA4AA9C6AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMusic.Application", "MyMusic.Application\MyMusic.Application.csproj", "{B87921F7-A10A-479D-8827-09699907A050}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMusic.Application", "MyMusic.Application\MyMusic.Application.csproj", "{B87921F7-A10A-479D-8827-09699907A050}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMusic.Infrastructure", "MyMusic.Infrastructure\MyMusic.Infrastructure.csproj", "{6C4B73A8-7198-4565-A9C5-DE7778679B64}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMusic.Infrastructure", "MyMusic.Infrastructure\MyMusic.Infrastructure.csproj", "{6C4B73A8-7198-4565-A9C5-DE7778679B64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyMusic.Domain", "MyMusic.Domain\MyMusic.Domain.csproj", "{C77BECDE-CA9C-4CBE-9F02-DBB56E76389E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyMusic.Domain", "MyMusic.Domain\MyMusic.Domain.csproj", "{C77BECDE-CA9C-4CBE-9F02-DBB56E76389E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9872F4B0-F91A-43B8-BFC6-C4E16A913124}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{5BA06270-9CCD-46B0-9475-F0226DE14D61}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +40,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{84639721-0EF4-49DC-8B45-1EAA4AA9C6AF} = {9872F4B0-F91A-43B8-BFC6-C4E16A913124}
+		{B87921F7-A10A-479D-8827-09699907A050} = {9872F4B0-F91A-43B8-BFC6-C4E16A913124}
+		{6C4B73A8-7198-4565-A9C5-DE7778679B64} = {9872F4B0-F91A-43B8-BFC6-C4E16A913124}
+		{C77BECDE-CA9C-4CBE-9F02-DBB56E76389E} = {9872F4B0-F91A-43B8-BFC6-C4E16A913124}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {12D066AB-E515-4AAB-B219-18E0AADAEBA7}
