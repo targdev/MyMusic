@@ -7,6 +7,6 @@ namespace MyMusic.Domain.Entities
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public List<MusicEntity> Musics { get; set; }
+        public List<MusicEntity> Musics { get; set; } = new List<MusicEntity>();
     }
 }

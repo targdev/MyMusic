@@ -1,10 +1,10 @@
-﻿namespace MyMusic.Application.Models
+﻿namespace MyMusic.Domain.Dto
 {
-    public class AcquiredMusics
+    public class AcquiredMusicsDto
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
         public Guid ArtistId { get; set; }
-        public AcquiredArtists Artist { get; init; }
+        public AcquiredArtistsDto Artist { get; set; }
     }
 }

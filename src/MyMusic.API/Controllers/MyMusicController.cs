@@ -7,33 +7,46 @@ using MyMusic.Application.UseCases.Abstratcs;
 namespace MyMusic.API.Controllers
 {
     [ApiController]
-    [Route("api")]
+    [Route("api/v1/musics")]
     public class MyMusicController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly ISearchAllMusicsUseCase _searchAllMusicsUseCase;
+        private readonly ISearchMusicsByNameUseCase _searchMusicsUseCase;
+        private readonly ICasesValidationUseCase _validationUseCase;
 
-        public MyMusicController(AppDbContext context)
+        public MyMusicController(
+            ISearchAllMusicsUseCase searchAllMusicsUseCase,
+            ISearchMusicsByNameUseCase searchMusicsUseCase,
+            ICasesValidationUseCase validationUseCase)
         {
-            _context = context;
+            _searchAllMusicsUseCase = searchAllMusicsUseCase;
+            _searchMusicsUseCase = searchMusicsUseCase;
+            _validationUseCase = validationUseCase;
         }
 
         [HttpGet]
-        [ProducesResponseType(typeof(List<AcquiredMusics>), 400)]
-        [ProducesResponseType(204)]
-        [Route("musics/{name}")]
-        public ActionResult<List<AcquiredMusics>> GetMusics(string name)
+        public ActionResult<List<AcquiredMusicsResponse>> GetAllMusics() 
         {
-            ISearchMusicsUseCase searchMusicsUseCase = new SearchMusicsUseCase();
-            ICasesValidationUseCase validationUseCase = new CasesValidationUseCase();
+            return Ok(_searchAllMusicsUseCase.Execute());
+        }
 
-            var validationInput = validationUseCase.ValidationSearchMusic(name);
-            var resultSearch = searchMusicsUseCase.SearchingByMusicName(_context, name);
-            var checkListValidation = validationUseCase.ValidationCheckListMusic(resultSearch);
 
-            if (!validationInput) return StatusCode(400);
-            if (!checkListValidation) return StatusCode(204);
+        [HttpGet("filtro={name}")]
+        [ProducesResponseType(typeof(List<AcquiredMusicsResponse>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public ActionResult<List<AcquiredMusicsResponse>> GetMusicsByName(string name)
+        {
+            var validationInput = _validationUseCase.ValidationSearchMusic(name);
 
-            return resultSearch;
+            if (!validationInput) return BadRequest();
+
+            var resultSearch = _searchMusicsUseCase.Execute(name);
+            var checkListValidation = _validationUseCase.ValidationCheckListMusic(resultSearch);
+
+            if (!checkListValidation) return NoContent();
+
+            return Ok(resultSearch);
         }
     }
 }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyMusic.Application.Models
+namespace MyMusic.Domain.Dto
 {
-    public class AcquiredArtists
+    public class AcquiredArtistsDto
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

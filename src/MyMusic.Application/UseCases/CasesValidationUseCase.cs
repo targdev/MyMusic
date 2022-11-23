@@ -7,16 +7,16 @@ namespace MyMusic.Application.UseCases
     {
         public bool ValidationSearchMusic(string name)
         {
-            if (name.Length < 3 || String.IsNullOrEmpty(name))
+            if (name.Length < 3)
             {
                 return false;
             }
 
             return true;
         }
-        public bool ValidationCheckListMusic(List<AcquiredMusics> musicList)
+        public bool ValidationCheckListMusic(List<AcquiredMusicsResponse> musicList)
         {
-            if (musicList.ToArray().Length == 0)
+            if (musicList.Count == 0)
             {
                 return false;
             }

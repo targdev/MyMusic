@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MyMusic.Domain.Abstractions.Gateways;
 using MyMusic.Infrastructure.DataProviders.Repositories;
 
 namespace MyMusic.API
@@ -17,6 +18,7 @@ namespace MyMusic.API
             services.AddControllers();
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddScoped<IMusicGateway, MusicRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

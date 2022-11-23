@@ -5,6 +5,6 @@ namespace MyMusic.Application.UseCases.Abstratcs
     public interface ICasesValidationUseCase
     {
         bool ValidationSearchMusic(string name);
-        public bool ValidationCheckListMusic(List<AcquiredMusics> musicList);
+        bool ValidationCheckListMusic(List<AcquiredMusicsResponse> musicList);
     }
 }
